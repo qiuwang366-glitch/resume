@@ -1,0 +1,160 @@
+/* Google Fonts imports */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  /* Intellectual Dark Mode Palette */
+  --background: #09090b; /* zinc-950 */
+  --background-secondary: #18181b; /* zinc-900 */
+  --background-tertiary: #27272a; /* zinc-800 */
+  --foreground: #fafafa; /* zinc-50 */
+  --foreground-muted: #a1a1aa; /* zinc-400 */
+  --foreground-subtle: #71717a; /* zinc-500 */
+
+  /* Accent Colors - Regulatory Blue & Gold */
+  --accent-blue: #3b82f6; /* blue-500 */
+  --accent-blue-hover: #60a5fa; /* blue-400 */
+  --accent-gold: #d4af37; /* institutional gold */
+  --accent-gold-hover: #e6c860;
+
+  /* Borders */
+  --border: #27272a; /* zinc-800 */
+  --border-hover: #3f3f46; /* zinc-700 */
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-tertiary: var(--background-tertiary);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-hover: var(--accent-blue-hover);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-gold-hover: var(--accent-gold-hover);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Serif headings */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Monospace for metrics/numbers */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground-subtle);
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-blue);
+  color: var(--foreground);
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for theme elements */
+a, button {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, var(--foreground) 0%, var(--foreground-muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gold accent gradient */
+.gradient-gold {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-hover) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtle glow effect for cards */
+.glow-card {
+  box-shadow: 0 0 0 1px var(--border),
+              0 4px 6px -1px rgba(0, 0, 0, 0.3),
+              0 2px 4px -2px rgba(0, 0, 0, 0.3);
+}
+
+.glow-card:hover {
+  box-shadow: 0 0 0 1px var(--border-hover),
+              0 10px 15px -3px rgba(0, 0, 0, 0.4),
+              0 4px 6px -4px rgba(0, 0, 0, 0.3);
+}
+
+/* Bento grid item animation */
+.bento-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-item:hover {
+  transform: translateY(-2px);
+}
+
+/* Timeline connector */
+.timeline-line {
+  background: linear-gradient(180deg, var(--accent-gold) 0%, var(--border) 100%);
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--border) 50%, transparent 100%);
+}
