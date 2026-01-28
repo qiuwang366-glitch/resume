@@ -78,14 +78,14 @@ export default function Hero() {
 
           {/* Key Metrics */}
           <motion.div
-            className="flex flex-wrap gap-8 mb-10"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
             {t.about.highlights.map((metric, index) => (
-              <div key={index} className="text-center">
-                <p className="text-2xl md:text-3xl font-bold font-mono text-[var(--foreground)]">
+              <div key={index} className="text-center md:text-left">
+                <p className="text-xl md:text-3xl font-bold font-mono text-[var(--foreground)]">
                   {metric.value}
                 </p>
                 <p className="text-xs text-[var(--foreground-subtle)] uppercase tracking-wider mt-1">
