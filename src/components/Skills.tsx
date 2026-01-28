@@ -55,8 +55,63 @@ export default function Skills() {
             </p>
           </div>
 
-          {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
+          {/* Mobile Horizontal Scroll */}
+          <div className="md:hidden -mx-6 px-6 overflow-x-auto scrollbar-hide">
+            <div className="flex gap-4 pb-4 snap-x snap-mandatory" style={{ width: 'max-content' }}>
+              {t.skills.categories.map((category, index) => {
+                const Icon = iconMap[category.icon] || BarChart3;
+
+                return (
+                  <motion.div
+                    key={index}
+                    className="glow-card bento-item rounded-xl p-5 bg-[var(--background)] w-[280px] flex-shrink-0 snap-start"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: '-50px' }}
+                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                  >
+                    {/* Category Header */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 rounded-lg bg-[var(--background-secondary)] border border-[var(--border)]">
+                        <Icon className="w-5 h-5 text-[var(--accent-gold)]" />
+                      </div>
+                      <h3
+                        className="text-lg font-semibold"
+                        style={{ fontFamily: 'var(--font-serif)' }}
+                      >
+                        {category.title}
+                      </h3>
+                    </div>
+
+                    {/* Skills List */}
+                    <div className="space-y-3">
+                      {category.items.map((item, itemIndex) => (
+                        <div key={itemIndex} className="group">
+                          <div className="flex items-baseline justify-between">
+                            <span className="font-mono text-sm font-medium text-[var(--foreground)]">
+                              {item.name}
+                            </span>
+                          </div>
+                          {item.description && (
+                            <p className="text-xs text-[var(--foreground-subtle)] mt-0.5">
+                              {item.description}
+                            </p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+            {/* Scroll hint */}
+            <p className="text-xs text-[var(--foreground-subtle)] text-center mt-2">
+              Swipe to explore more skills
+            </p>
+          </div>
+
+          {/* Desktop Bento Grid */}
+          <div className="hidden md:grid md:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
             {t.skills.categories.map((category, index) => {
               const Icon = iconMap[category.icon] || BarChart3;
               const layoutClass = bentoLayouts[index] || 'md:col-span-1';

@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, Globe, TrendingUp } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 
 export default function Header() {
@@ -23,6 +24,7 @@ export default function Header() {
     { href: '#experience', label: t.nav.experience },
     { href: '#skills', label: t.nav.skills },
     { href: '#projects', label: t.nav.projects },
+    { href: '/market-analysis', label: t.nav.blog, external: true },
     { href: '#contact', label: t.nav.contact },
   ];
 
@@ -55,16 +57,28 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            {navItems.map((item, index) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-sm text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors"
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item, index) =>
+              item.external ? (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm text-[var(--foreground-muted)] hover:text-[var(--accent-gold)] transition-colors flex items-center gap-1"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <TrendingUp className="w-3 h-3" />
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  {item.label}
+                </a>
+              )
+            )}
           </motion.div>
 
           {/* Language Toggle & Mobile Menu Button */}
@@ -113,16 +127,28 @@ export default function Header() {
             className="md:hidden bg-[var(--background)]/95 backdrop-blur-md border-b border-[var(--border)]"
           >
             <div className="px-6 py-4 space-y-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {navItems.map((item) =>
+                item.external ? (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex items-center gap-2 text-[var(--foreground-muted)] hover:text-[var(--accent-gold)] transition-colors"
+                  >
+                    <TrendingUp className="w-4 h-4" />
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                )
+              )}
             </div>
           </motion.div>
         )}

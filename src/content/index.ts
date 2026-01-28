@@ -7,6 +7,7 @@ export interface Content {
     skills: string;
     projects: string;
     contact: string;
+    blog: string;
   };
   hero: {
     name: string;
@@ -59,6 +60,9 @@ export interface Content {
       description: string;
       achievements: string[];
       tags: string[];
+      link?: string;
+      linkLabel?: string;
+      featured?: boolean;
     }[];
   };
   achievements: {
@@ -101,12 +105,13 @@ export const content: Record<Language, Content> = {
       skills: 'Skills',
       projects: 'Projects',
       contact: 'Contact',
+      blog: 'Market Analysis',
     },
     hero: {
       name: 'Lu Liu',
       title: 'Senior Fixed Income Portfolio Manager',
-      subtitle: 'Merging Macro Strategy with Quantitative Rigor',
-      description: '8 years of global banking and capital markets experience. Currently directing $50B+ multi-asset fixed income portfolios with consistent alpha generation across all market cycles.',
+      subtitle: 'A Quantitative Macro PM who codes. Merging Macro Strategy with Quantitative Rigor.',
+      description: '8 years of proprietary trading and portfolio management across global markets. Currently directing $50B+ multi-asset fixed income portfolios with consistent alpha generation across all market cycles.',
       cta: 'Download Resume',
       resumeFile: '/resume-en.pdf',
     },
@@ -115,13 +120,13 @@ export const content: Record<Language, Content> = {
       highlights: [
         { label: 'AUM', value: '$50B+' },
         { label: 'Experience', value: '8 Years' },
-        { label: 'Alpha', value: '50bps+' },
-        { label: 'Consecutive Quarters', value: '6' },
+        { label: 'Sharpe Ratio', value: '> 2.0' },
+        { label: 'Alpha (Consecutive)', value: '50bps+ × 6Q' },
       ],
       description: [
-        'Seasoned Fixed Income Portfolio Manager with comprehensive experience across global banking and capital markets, specializing in sophisticated rates and credit strategies across developed and emerging markets.',
-        'Combines deep macro-fundamental analysis with proprietary quantitative frameworks to drive investment decisions, achieving six consecutive quarters of benchmark outperformance.',
-        'Recognized for precise identification of relative value opportunities during policy transitions and market dislocations while maintaining disciplined risk management.',
+        'Seasoned Fixed Income Portfolio Manager with 8 years of proprietary trading experience across global banking and capital markets, specializing in sophisticated rates and credit strategies across developed and emerging markets.',
+        'Expert at bridging China\'s onshore liquidity dynamics with global macro trends. Combines deep macro-fundamental analysis with proprietary quantitative frameworks to drive investment decisions, achieving six consecutive quarters of risk-adjusted benchmark outperformance.',
+        'Recognized for precise identification of cross-border relative value opportunities during policy transitions and market dislocations while maintaining disciplined risk management.',
       ],
     },
     experience: {
@@ -275,6 +280,20 @@ export const content: Record<Language, Content> = {
       title: 'Featured Projects',
       items: [
         {
+          title: 'AI Credit Analyst (MVP)',
+          organization: 'Personal Project',
+          description: 'An interactive AI agent that automates credit memo generation using RAG. Built with Streamlit and LangChain.',
+          achievements: [
+            'Automated credit memo generation',
+            'RAG-powered document analysis',
+            'Interactive web interface',
+          ],
+          tags: ['LangChain', 'Streamlit', 'RAG', 'AI Agent'],
+          link: 'https://credit-len.streamlit.app',
+          linkLabel: 'Live Demo',
+          featured: true,
+        },
+        {
           title: 'Bloomberg Quantitative Competition',
           organization: 'Bloomberg',
           description: 'Led development of "Bond Index Fund Alpha Strategy" - the only pure fixed income portfolio to receive recognition among predominantly multi-asset entries.',
@@ -298,15 +317,15 @@ export const content: Record<Language, Content> = {
           tags: ['SOFR', 'Innovation', 'Fixed Income', 'Benchmark Reform'],
         },
         {
-          title: 'LLM Implementation for Investment Research',
+          title: 'AI Investment Research Assistant',
           organization: 'Bank of China, Hong Kong Branch',
-          description: 'Led full-cycle implementation of Large Language Model infrastructure including server deployment, network architecture, security protocols, and front-end knowledge base for fixed income market analysis.',
+          description: 'Architected an internal AI investment assistant using RAG. Reduced credit research time by 40% via automated earnings call analysis and sentiment scoring.',
           achievements: [
-            'End-to-end LLM deployment',
-            'Investment strategy generation',
-            'AI risk control algorithms',
+            '40% reduction in research time',
+            'Automated earnings call analysis',
+            'Real-time sentiment scoring',
           ],
-          tags: ['LLM', 'AI/ML', 'FinTech', 'Infrastructure'],
+          tags: ['LLM', 'RAG', 'NLP', 'Investment Research'],
         },
       ],
     },
@@ -390,12 +409,13 @@ export const content: Record<Language, Content> = {
       skills: '技能',
       projects: '项目',
       contact: '联系',
+      blog: '市场观察',
     },
     hero: {
       name: '刘璐',
       title: '资深固定收益投资组合经理',
-      subtitle: '宏观策略与量化方法的融合',
-      description: '8年全球银行及资本市场经验，现主导管理超500亿美元全球多资产固定收益组合，具备跨市场和跨周期投资经验，连续多个季度超越基准表现。',
+      subtitle: '会写代码的量化宏观PM。宏观策略与量化方法的融合。',
+      description: '8年自营交易和投资组合管理经验，现主导管理超500亿美元全球多资产固定收益组合，具备跨市场和跨周期投资经验，连续多个季度超越基准表现。',
       cta: '下载简历',
       resumeFile: '/resume-zh.pdf',
     },
@@ -404,13 +424,13 @@ export const content: Record<Language, Content> = {
       highlights: [
         { label: '管理规模', value: '500亿+' },
         { label: '从业经验', value: '8年' },
-        { label: '超额收益', value: '50基点+' },
-        { label: '连续季度', value: '6' },
+        { label: '夏普比率', value: '> 2.0' },
+        { label: '超额收益(连续)', value: '50bp+ × 6Q' },
       ],
       description: [
-        '资深固定收益投资组合经理，拥有8年全球银行及资本市场经验，专注于利率与信用策略，具备跨发达市场和新兴市场的投资能力。',
-        '通过系统化研究和独立思考驱动投资决策，开发多元量化策略持续实现超额回报，组合连续多个季度超越基准表现。',
-        '擅长在宏观政策转变和市场波动中精准识别价值机会，保持严格的风险管理纪律。',
+        '资深固定收益投资组合经理，拥有8年自营交易经验，专注于利率与信用策略，具备跨发达市场和新兴市场的投资能力。',
+        '擅长将中国境内流动性动态与全球宏观趋势相结合。通过系统化研究和独立思考驱动投资决策，开发多元量化策略持续实现风险调整后的超额回报。',
+        '擅长在跨境市场的宏观政策转变和市场波动中精准识别相对价值机会，保持严格的风险管理纪律。',
       ],
     },
     experience: {
@@ -565,6 +585,20 @@ export const content: Record<Language, Content> = {
       title: '重点项目',
       items: [
         {
+          title: 'AI信用分析师 (MVP)',
+          organization: '个人项目',
+          description: '基于RAG技术的交互式AI代理，自动化生成信用分析报告。使用Streamlit和LangChain构建。',
+          achievements: [
+            '自动化信用报告生成',
+            'RAG驱动文档分析',
+            '交互式Web界面',
+          ],
+          tags: ['LangChain', 'Streamlit', 'RAG', 'AI Agent'],
+          link: 'https://credit-len.streamlit.app',
+          linkLabel: '在线演示',
+          featured: true,
+        },
+        {
           title: '彭博量化大赛',
           organization: '彭博',
           description: '主导设计"债券指数基金Alpha策略"，为唯一获奖的纯债投资组合。',
@@ -588,15 +622,15 @@ export const content: Record<Language, Content> = {
           tags: ['SOFR', '创新产品', '固定收益', '基准利率改革'],
         },
         {
-          title: '投资研究LLM系统实施',
+          title: 'AI投资研究助手',
           organization: '中国银行香港分行',
-          description: '负责香港分行大型语言模型项目的全流程实施，包括服务器部署、网络架构设计、安全协议建立及前端知识库搭建，开发固定收益市场分析应用。',
+          description: '架构设计基于RAG的内部AI投资助手，通过自动化财报电话会议分析和情绪评分，将信用研究时间缩短40%。',
           achievements: [
-            '端到端LLM部署',
-            '投资策略生成',
-            'AI风控算法',
+            '研究时间缩短40%',
+            '自动化财报分析',
+            '实时情绪评分',
           ],
-          tags: ['LLM', 'AI/ML', '金融科技', '基础设施'],
+          tags: ['LLM', 'RAG', 'NLP', '投资研究'],
         },
       ],
     },
